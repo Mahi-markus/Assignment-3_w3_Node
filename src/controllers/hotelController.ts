@@ -89,45 +89,43 @@ export const getHotel = async (req: Request, res: Response, next: NextFunction) 
 
 
 // Handle image uploads and associate them with a hotel
-export const uploadImages = async (req: Request, res: Response, next: NextFunction) => {
-    try {
+// Handle image uploads and associate them with a hotel
+export const uploadImages = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
       const { hotelId } = req.body;
-  
+
       if (!hotelId) {
-        return res.status(400).json({ message: 'hotelId is required' });
+          res.status(400).json({ message: 'hotelId is required' });
+          return; // End early to avoid TypeScript error
       }
-  
+
       const hotel = await getHotelById(hotelId);
       if (!hotel) {
-        return res.status(404).json({ message: 'Hotel not found' });
+          res.status(404).json({ message: 'Hotel not found' });
+          return;
       }
-  
+
       if (!req.files || !(req.files instanceof Array)) {
-        return res.status(400).json({ message: 'No images uploaded' });
+          res.status(400).json({ message: 'No images uploaded' });
+          return;
       }
-  
+
       // Generate URLs for uploaded images
       const imageUrls = (req.files as Express.Multer.File[]).map((file) => {
-        return `${req.protocol}://${req.get('host')}/images/${file.filename}`;
+          return `${req.protocol}://${req.get('host')}/images/${file.filename}`;
       });
-  
+
       // Add the uploaded image URLs to the hotel
       hotel.images = hotel.images.concat(imageUrls);
-      
+
       await saveHotel(hotel); // Save the updated hotel with new images
-  
+
       res.status(200).json({ images: imageUrls });
-    } catch (error) {
+  } catch (error) {
       console.error('Error uploading images:', error);
-      next(error); // Pass error to next handler
-    }
-  };
-
-
-
-
-
-
+      next(error); // Use next(error) and cast as void to satisfy TypeScript
+  }
+};
 
   export const updateHotelData = async (req: Request, res: Response, next: NextFunction) => {
     try {

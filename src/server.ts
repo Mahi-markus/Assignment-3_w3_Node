@@ -4,7 +4,7 @@ import app from './index';
 import fs from 'fs';
 import path from 'path';
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // Ensure data and images directories exist
 const dataDir = path.join(__dirname, '../data');

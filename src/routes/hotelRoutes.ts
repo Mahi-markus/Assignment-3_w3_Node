@@ -28,8 +28,7 @@ router.get('/hotel/:identifier', getHotel);
 router.put('/hotel/:hotelId',  updateHotelData);
 
 
-// POST /images
-//router.post('/images', upload.array('images', 10), uploadImages); // Limit to 10 images
+router.post('/hotels/upload-images', upload.array('images'), uploadImages);
 
 
 export default router;
