@@ -1,0 +1,34 @@
+{
+  "hotelId": "74666035-758f-480a-80fd-45882a16c69b",
+  "title": "Not Luxury Beach Resort",
+  "description": "A beautiful beach resort with luxury rooms.",
+  "guestCount": 100,
+  "bedroomCount": 50,
+  "bathroomCount": 50,
+  "amenities": [
+    "Free Wi-Fi",
+    "Swimming Pool",
+    "Gym",
+    "Restaurant"
+  ],
+  "hostInfo": "Contact info for the host.",
+  "address": "123 Beach Avenue, Island City",
+  "latitude": 12.345678,
+  "longitude": 98.7654321,
+  "slug": "not-luxury-beach-resort",
+  "images": [],
+  "rooms": [
+    {
+      "roomSlug": "deluxe-suite",
+      "roomImage": "https://example.com/rooms/deluxe.jpg",
+      "roomTitle": "Deluxe Suite",
+      "roomBedroomCount": 2
+    },
+    {
+      "roomSlug": "standard-room",
+      "roomImage": "https://example.com/rooms/standard.jpg",
+      "roomTitle": "Standard Room",
+      "roomBedroomCount": 1
+    }
+  ]
+}
