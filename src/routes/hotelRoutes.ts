@@ -2,7 +2,7 @@
 
 import express from 'express';
 import upload from '../utils/upload'; // Multer upload setup
-import { hotelValidation, roomValidation } from '../middleware/Validations';
+import hotelValidation from '../middleware/Validations';
 import { validationResult } from 'express-validator';
 
 
@@ -20,7 +20,7 @@ import {
 const router = express.Router();
 
 // POST /hotel
-router.post('/hotel',createHotel);
+router.post('/hotel', hotelValidation, createHotel);
 
 
 
@@ -31,9 +31,11 @@ router.get('/hotel/:identifier', getHotel);
 // PUT /hotel/:hotelId
 router.put('/hotel/:hotelId',  updateHotelData);
 
-
+// image upload
 router.post('/hotels/upload-images', upload.array('images'), uploadImages);
 
+
+//room image upload
 router.post('/hotels/upload-room-images', upload.array('roomImage'), uploadRoomImages);
 
 export default router;

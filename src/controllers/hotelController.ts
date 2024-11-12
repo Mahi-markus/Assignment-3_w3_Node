@@ -9,6 +9,7 @@ import slugify from 'slugify';
 import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
 import { errorHandler } from '../middleware/errorHandle';
+import { error } from 'console';
 //import { body, validationResult } from 'express-validator';
 
 
