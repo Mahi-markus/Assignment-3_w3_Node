@@ -4,11 +4,11 @@ import app from './index';
 import fs from 'fs';
 import path from 'path';
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Ensure data and images directories exist
-const dataDir = path.join(__dirname, '../data');
-const imagesDir = path.join(__dirname, '../images');
+const dataDir = path.join(__dirname, './fileDate');
+const imagesDir = path.join(__dirname, '../fileDate/images');
 
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir);

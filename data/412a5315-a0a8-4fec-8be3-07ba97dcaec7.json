@@ -1,5 +1,5 @@
 {
-  "hotelId": "aea44287-6886-4ba3-92c6-58958ae9a8b6",
+  "hotelId": "412a5315-a0a8-4fec-8be3-07ba97dcaec7",
   "title": "Luxury Beach Resort123",
   "description": "A beautiful beach resort with luxury rooms.",
   "guestCount": 100,
@@ -16,17 +16,20 @@
   "latitude": 12.345678,
   "longitude": 98.7654321,
   "slug": "luxury-beach-resort123",
-  "images": [],
+  "images": [
+    "http://localhost:3001/images/1731392075114-774845142.jpg",
+    "http://localhost:3001/images/1731392075116-512907330.jpeg"
+  ],
   "rooms": [
     {
       "roomSlug": "deluxe-suite",
-      "roomImage": "https://example.com/rooms/deluxe.jpg",
+      "roomImage": [],
       "roomTitle": "Deluxe Suite",
       "roomBedroomCount": 2
     },
     {
       "roomSlug": "standard-room",
-      "roomImage": "https://example.com/rooms/standard.jpg",
+      "roomImage": [],
       "roomTitle": "Standard Room",
       "roomBedroomCount": 1
     }

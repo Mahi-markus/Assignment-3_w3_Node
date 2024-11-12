@@ -1,6 +1,6 @@
 {
-  "hotelId": "919a8d98-8ee3-4700-b416-2032ce1519ae",
-  "title": "Not so Luxury Beach Resort",
+  "hotelId": "0d8a73c5-5e98-46be-a605-7a17d3eb86c1",
+  "title": "Luxury Beach Resort123",
   "description": "A beautiful beach resort with luxury rooms.",
   "guestCount": 100,
   "bedroomCount": 50,
@@ -15,18 +15,25 @@
   "address": "123 Beach Avenue, Island City",
   "latitude": 12.345678,
   "longitude": 98.7654321,
-  "slug": "not-so-luxury-beach-resort",
+  "slug": "luxury-beach-resort123",
   "images": [],
   "rooms": [
     {
       "roomSlug": "deluxe-suite",
-      "roomImage": "https://example.com/rooms/deluxe.jpg",
+      "roomImage": [
+        "http://localhost:3001/images/1731394470206-904463924.jpeg",
+        "http://localhost:3001/images/1731394483051-824441424.jpeg",
+        "http://localhost:3001/images/1731394483052-888191869.jpg"
+      ],
       "roomTitle": "Deluxe Suite",
       "roomBedroomCount": 2
     },
     {
       "roomSlug": "standard-room",
-      "roomImage": "https://example.com/rooms/standard.jpg",
+      "roomImage": [
+        "http://localhost:3001/images/1731394662334-874061156.jpeg",
+        "http://localhost:3001/images/1731394662334-122568195.jpg"
+      ],
       "roomTitle": "Standard Room",
       "roomBedroomCount": 1
     }

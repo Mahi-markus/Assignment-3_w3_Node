@@ -2,7 +2,7 @@
 
 export interface Room {
     roomSlug: string;
-    roomImage: string;
+    roomImage: string[];
     roomTitle: string;
     roomBedroomCount: number;
   }

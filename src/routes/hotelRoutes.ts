@@ -9,6 +9,7 @@ import {
   uploadImages,
   getHotel,
   updateHotelData,
+  uploadRoomImages
   
 } from '../controllers/hotelController';
 
@@ -30,5 +31,6 @@ router.put('/hotel/:hotelId',  updateHotelData);
 
 router.post('/hotels/upload-images', upload.array('images'), uploadImages);
 
+router.post('/hotels/upload-room-images', upload.array('roomImage'), uploadRoomImages);
 
 export default router;

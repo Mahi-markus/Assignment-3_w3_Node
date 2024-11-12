@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { Request, Response, NextFunction } from 'express';
 import { Hotel } from '../models/hotel';
+
 import { Room } from '../models/room'; 
 import { saveHotel, getHotelById,updateHotel} from '../utils/filehandler';
 
@@ -127,6 +128,73 @@ export const uploadImages = async (req: Request, res: Response, next: NextFuncti
   }
 };
 
+
+//room image upload
+// Handle image uploads and associate them with a hotel for room
+export const uploadRoomImages = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const { hotelId, roomSlug } = req.body;
+
+    // Check if hotelId and roomSlug are provided
+    if (!hotelId || !roomSlug) {
+      res.status(400).json({ message: 'hotelId and roomSlug are required' });
+      return;
+    }
+
+    // Find the hotel by hotelId
+    const hotel = await getHotelById(hotelId);
+    if (!hotel) {
+      res.status(404).json({ message: 'Hotel not found' });
+      return;
+    }
+
+    // Find the room by roomSlug
+    const room = hotel.rooms.find(r => r.roomSlug === roomSlug);
+    if (!room) {
+      res.status(404).json({ message: 'Room not found' });
+      return;
+    }
+
+    // If no images are uploaded
+    if (!req.files || !(req.files instanceof Array)) {
+      res.status(400).json({ message: 'No images uploaded' });
+      return;
+    }
+
+    // Generate URLs for uploaded images
+    const imageUrls = (req.files as Express.Multer.File[]).map((file) => {
+      return `${req.protocol}://${req.get('host')}/images/${file.filename}`;
+    });
+
+    // Add the uploaded image URLs to the room's roomImage array
+    if (!room.roomImage) {
+      room.roomImage = []; // Ensure roomImage array exists
+    }
+    room.roomImage = room.roomImage.concat(imageUrls); // Append the new images
+
+    // Save the updated hotel with the new room images
+    await saveHotel(hotel);
+
+    res.status(200).json({ roomSlug, roomImages: imageUrls });
+  } catch (error) {
+    console.error('Error uploading room images:', error);
+    next(error);
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////
   export const updateHotelData = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { hotelId } = req.params;
