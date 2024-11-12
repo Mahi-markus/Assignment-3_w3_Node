@@ -1,13 +1,13 @@
 import request from 'supertest';
 import express from 'express';
-import { validateHotel } from '../middleware/Validations';
+
 import { createHotel } from '../controllers/hotelController'; 
 
 const app = express();
 app.use(express.json()); // To parse JSON bodies
 
 // Apply your middleware
-app.post('/api/hotel', validateHotel,  createHotel);
+app.post('/api/hotel',   createHotel);
 
 describe('Hotel Validation Tests', () => {
   it('should return a validation error for missing title', async () => {

@@ -1,0 +1,20 @@
+{
+  "hotelId": "12de60cc-0947-45e0-bdde-8219234098c3",
+  "title": "Test Hotel",
+  "description": "A nice hotel",
+  "guestCount": 2,
+  "bedroomCount": 1,
+  "bathroomCount": 1,
+  "amenities": [
+    "wifi"
+  ],
+  "hostInfo": {
+    "name": "John Doe"
+  },
+  "address": "123 Main St",
+  "latitude": 200,
+  "longitude": -200,
+  "slug": "test-hotel",
+  "images": [],
+  "rooms": []
+}

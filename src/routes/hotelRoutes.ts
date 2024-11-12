@@ -2,7 +2,8 @@
 
 import express from 'express';
 import upload from '../utils/upload'; // Multer upload setup
-import {validateHotel, checkValidationErrors } from '../middleware/Validations';
+import { hotelValidation, roomValidation } from '../middleware/Validations';
+import { validationResult } from 'express-validator';
 
 
 

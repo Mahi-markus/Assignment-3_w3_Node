@@ -1,31 +1,104 @@
-import { body, ValidationChain, validationResult } from 'express-validator';
-import { Request, Response, NextFunction } from 'express';
+// hotelValidation.ts
+import { checkSchema, ValidationChain } from 'express-validator';
 
-export const validateHotel: ValidationChain[] = [
-  body('title').isString().withMessage('Title must be a string'),
-  body('description').isString().withMessage('Description must be a string'),
-  body('guestCount').isInt({ min: 1 }).withMessage('Guest count must be a positive integer'),
-  body('bedroomCount').isInt({ min: 1 }).withMessage('Bedroom count must be a positive integer'),
-  body('bathroomCount').isInt({ min: 1 }).withMessage('Bathroom count must be a positive integer'),
-  body('amenities').optional().isArray().withMessage('Amenities must be an array'),
-  body('hostInfo').isObject().withMessage('Host info must be an object'),
-  body('address').isString().withMessage('Address must be a string'),
-  body('latitude').isFloat({ min: -90, max: 90 }).withMessage('Latitude must be between -90 and 90'),
-  body('longitude').isFloat({ min: -180, max: 180 }).withMessage('Longitude must be between -180 and 180'),
+export const hotelValidation = checkSchema({
+  hotelId: {
+    in: ['body'],
+    isString: true,
+    errorMessage: 'Hotel ID must be a string.',
+  },
+  title: {
+    in: ['body'],
+    isString: true,
+    errorMessage: 'Title must be a string.',
+  },
+  description: {
+    in: ['body'],
+    isString: true,
+    errorMessage: 'Description must be a string.',
+  },
+  guestCount: {
+    in: ['body'],
+    isInt: true,
+    toInt: true,
+    errorMessage: 'Guest count must be an integer.',
+  },
+  bedroomCount: {
+    in: ['body'],
+    isInt: true,
+    toInt: true,
+    errorMessage: 'Bedroom count must be an integer.',
+  },
+  bathroomCount: {
+    in: ['body'],
+    isInt: true,
+    toInt: true,
+    errorMessage: 'Bathroom count must be an integer.',
+  },
+  amenities: {
+    in: ['body'],
+    isArray: true,
+    errorMessage: 'Amenities must be an array of strings.',
+  },
+  hostInfo: {
+    in: ['body'],
+    isString: true,
+    errorMessage: 'Host information must be a string.',
+  },
+  address: {
+    in: ['body'],
+    isString: true,
+    errorMessage: 'Address must be a string.',
+  },
+  latitude: {
+    in: ['body'],
+    isFloat: true,
+    toFloat: true,
+    errorMessage: 'Latitude must be a number.',
+  },
+  longitude: {
+    in: ['body'],
+    isFloat: true,
+    toFloat: true,
+    errorMessage: 'Longitude must be a number.',
+  },
+  slug: {
+    in: ['body'],
+    isString: true,
+    errorMessage: 'Slug must be a string.',
+  },
+  images: {
+    in: ['body'],
+    isArray: true,
+    errorMessage: 'Images must be an array of strings.',
+  },
+  rooms: {
+    in: ['body'],
+    isArray: true,
+    errorMessage: 'Rooms must be an array of room objects.',
+  },
+});
 
-  // Room validation
-  body('rooms').optional().isArray().withMessage('Rooms must be an array'),
-  body('rooms.*.roomTitle').isString().withMessage('Room title must be a string'),
-  body('rooms.*.roomBedroomCount').isInt({ min: 1 }).withMessage('Room bedroom count must be a positive integer'),
-  body('rooms.*.roomImage').optional().isURL().withMessage('Room image must be a valid URL'),
-];
-
-
-
-export const checkValidationErrors = (req: Request, res: Response, next: NextFunction) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-    next();
-  };
+export const roomValidation = checkSchema({
+  roomSlug: {
+    in: ['body'],
+    isString: true,
+    errorMessage: 'Room slug must be a string.',
+  },
+  roomImage: {
+    in: ['body'],
+    isArray: true,
+    errorMessage: 'Room image must be an array of strings.',
+  },
+  roomTitle: {
+    in: ['body'],
+    isString: true,
+    errorMessage: 'Room title must be a string.',
+  },
+  roomBedroomCount: {
+    in: ['body'],
+    isInt: true,
+    toInt: true,
+    errorMessage: 'Room bedroom count must be an integer.',
+  },
+});
