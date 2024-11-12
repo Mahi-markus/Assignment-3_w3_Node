@@ -1,10 +1,8 @@
 {
-  "hotelId": "0d8a73c5-5e98-46be-a605-7a17d3eb86c1",
-  "title": "Luxury Beach",
+  "hotelId": "7af1e5ec-ad70-4ce6-9abd-edf48dac9544",
+  "title": "Luxury Beach1",
   "description": "A beautiful beach resort with luxury rooms1.",
   "guestCount": 100,
-  "bedroomCount": 50,
-  "bathroomCount": 50,
   "amenities": [
     "Free Wi-Fi",
     "Swimming Pool",
@@ -15,7 +13,7 @@
   "address": "123 Beach Avenue, Island City",
   "latitude": 12.345678,
   "longitude": 98.7654321,
-  "slug": "luxury-beach",
+  "slug": "luxury-beach1",
   "images": [],
   "rooms": [
     {
@@ -32,9 +30,7 @@
       "roomSlug": "standard-room",
       "roomImage": [
         "http://localhost:3001/images/1731394662334-874061156.jpeg",
-        "http://localhost:3001/images/1731394662334-122568195.jpg",
-        "http://localhost:3001/images/1731402861476-330272673.jpeg",
-        "http://localhost:3001/images/1731402861477-790414982.jpg"
+        "http://localhost:3001/images/1731394662334-122568195.jpg"
       ],
       "roomTitle": "Standard Room",
       "roomBedroomCount": 1

@@ -9,15 +9,25 @@ import slugify from 'slugify';
 import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
 import { errorHandler } from '../middleware/errorHandle';
+import { body, validationResult } from 'express-validator';
 
 
 
+
+
+// Validation middleware
 
 
 
 // Create a new hotel with room information
 export const createHotel = async (req: Request, res: Response, next: NextFunction) => {
   try {
+
+  //Check validation results
+
+  
+ 
+  //for create purpose
     const hotelData: Hotel = req.body;
 
     // Generate unique hotel ID and slug for the hotel
@@ -31,6 +41,9 @@ export const createHotel = async (req: Request, res: Response, next: NextFunctio
       roomTitle: room.roomTitle,
       roomBedroomCount: room.roomBedroomCount,
     })) || [];
+
+
+
 
     const newHotel: Hotel = {
       hotelId,
@@ -52,6 +65,7 @@ export const createHotel = async (req: Request, res: Response, next: NextFunctio
     await saveHotel(newHotel);
     res.status(201).json(newHotel);
   } catch (error) {
+    console.error('Error creating hotel:', error);
     next(error);
   }
 };
@@ -133,7 +147,12 @@ export const uploadImages = async (req: Request, res: Response, next: NextFuncti
 // Handle image uploads and associate them with a hotel for room
 export const uploadRoomImages = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
+
+
+
     const { hotelId, roomSlug } = req.body;
+
+   
 
     // Check if hotelId and roomSlug are provided
     if (!hotelId || !roomSlug) {
@@ -219,3 +238,7 @@ export const uploadRoomImages = async (req: Request, res: Response, next: NextFu
       }
     }
   };
+
+
+
+

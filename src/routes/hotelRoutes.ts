@@ -2,6 +2,8 @@
 
 import express from 'express';
 import upload from '../utils/upload'; // Multer upload setup
+import {validateHotel, checkValidationErrors } from '../middleware/Validations';
+
 
 
 import {
@@ -17,7 +19,7 @@ import {
 const router = express.Router();
 
 // POST /hotel
-router.post('/hotel', createHotel);
+router.post('/hotel', validateHotel,createHotel);
 
 
 
