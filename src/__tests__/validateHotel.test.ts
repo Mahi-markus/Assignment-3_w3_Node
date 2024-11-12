@@ -1,19 +1,19 @@
 import request from 'supertest';
 import express from 'express';
-
 import { createHotel } from '../controllers/hotelController'; 
 
 const app = express();
 app.use(express.json()); // To parse JSON bodies
 
-// Apply your middleware
-app.post('/api/hotel',   createHotel);
+// Apply your validation middleware
+app.post('/api/hotel',  createHotel);
 
 describe('Hotel Validation Tests', () => {
   it('should return a validation error for missing title', async () => {
     const response = await request(app)
       .post('/api/hotel')
       .send({
+       
         description: 'A nice hotel',
         guestCount: 2,
         bedroomCount: 1,
@@ -25,7 +25,6 @@ describe('Hotel Validation Tests', () => {
         longitude: 74.0060,
       });
 
-    // Check for 400 status and the correct error message
     expect(response.status).toBe(400);
     expect(response.body.errors).toContainEqual(expect.objectContaining({
       msg: 'Title must be a string',
@@ -37,7 +36,7 @@ describe('Hotel Validation Tests', () => {
     const response = await request(app)
       .post('/api/hotel')
       .send({
-        title: 'Test Hotel',  // Valid title
+        title: 'Test Hotel',
         description: 'A nice hotel',
         guestCount: 2,
         bedroomCount: 1,
@@ -49,7 +48,6 @@ describe('Hotel Validation Tests', () => {
         longitude: -200, // Invalid longitude
       });
 
-    // Check for 400 status and the latitude and longitude errors
     expect(response.status).toBe(400);
     expect(response.body.errors).toContainEqual(expect.objectContaining({
       msg: 'Latitude must be between -90 and 90',
@@ -65,7 +63,7 @@ describe('Hotel Validation Tests', () => {
     const response = await request(app)
       .post('/api/hotel')
       .send({
-        title: 'Test Hotel',  // Valid title
+        title: 'Test Hotel',  
         description: 'A nice hotel',
         guestCount: 2,
         bedroomCount: 1,
@@ -77,7 +75,6 @@ describe('Hotel Validation Tests', () => {
         longitude: -74.0060,
       });
 
-    // Check for 201 status (created successfully)
     expect(response.status).toBe(201);
     expect(response.body).toHaveProperty('title', 'Test Hotel');
     expect(response.body).toHaveProperty('description', 'A nice hotel');
@@ -89,7 +86,7 @@ describe('Hotel Validation Tests', () => {
     const response = await request(app)
       .post('/api/hotel')
       .send({
-        title: 'Test Hotel',  // Valid title
+        title: 'Test Hotel',
         description: 'A nice hotel',
         guestCount: -1,  // Invalid guest count
         bedroomCount: 1,
@@ -101,7 +98,6 @@ describe('Hotel Validation Tests', () => {
         longitude: -74.0060,
       });
 
-    // Check for 400 status and the guest count error
     expect(response.status).toBe(400);
     expect(response.body.errors).toContainEqual(expect.objectContaining({
       msg: 'Guest count must be a positive integer',
@@ -126,7 +122,6 @@ describe('Hotel Validation Tests', () => {
         rooms: {}  // Invalid rooms type (not an array)
       });
 
-    // Check for 400 status and the rooms validation error
     expect(response.status).toBe(400);
     expect(response.body.errors).toContainEqual(expect.objectContaining({
       msg: 'Rooms must be an array',
