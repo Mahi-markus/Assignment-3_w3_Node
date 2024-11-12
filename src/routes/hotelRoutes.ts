@@ -19,7 +19,7 @@ import {
 const router = express.Router();
 
 // POST /hotel
-router.post('/hotel', validateHotel,createHotel);
+router.post('/hotel',createHotel);
 
 
 
