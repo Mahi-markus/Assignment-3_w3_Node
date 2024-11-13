@@ -23,15 +23,10 @@ import { error } from 'console';
 // Create a new hotel with room information
 export const createHotel = async (req: Request, res: Response, next: NextFunction) => {
   try {
-
-  //Check validation results
-
-  
- 
-  //for create purpose
+    // Extract hotel data from request body
     const hotelData: Hotel = req.body;
 
-    // Generate unique hotel ID and slug for the hotel
+    // Generate unique hotel ID and slug for the hotel title
     const hotelId = uuidv4();
     const slug = slugify(hotelData.title, { lower: true, strict: true });
 
@@ -43,9 +38,7 @@ export const createHotel = async (req: Request, res: Response, next: NextFunctio
       roomBedroomCount: room.roomBedroomCount,
     })) || [];
 
-
-
-
+    // Construct the new hotel object
     const newHotel: Hotel = {
       hotelId,
       title: hotelData.title,
@@ -63,7 +56,10 @@ export const createHotel = async (req: Request, res: Response, next: NextFunctio
       rooms, // Adding the rooms details
     };
 
+    // Save the hotel to the database or storage
     await saveHotel(newHotel);
+
+    // Respond with the created hotel data
     res.status(201).json(newHotel);
   } catch (error) {
     console.error('Error creating hotel:', error);
@@ -76,9 +72,7 @@ export const createHotel = async (req: Request, res: Response, next: NextFunctio
 
 
 
-
 // Get hotel by ID or slug
-// src/controllers/hotelController.ts
 
 export const getHotel = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -214,7 +208,7 @@ export const uploadRoomImages = async (req: Request, res: Response, next: NextFu
 
 
 
-//////
+//////update hotel info through hotelID
   export const updateHotelData = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { hotelId } = req.params;

@@ -23,7 +23,9 @@
       "roomImage": [
         "http://localhost:3001/images/1731394470206-904463924.jpeg",
         "http://localhost:3001/images/1731394483051-824441424.jpeg",
-        "http://localhost:3001/images/1731394483052-888191869.jpg"
+        "http://localhost:3001/images/1731394483052-888191869.jpg",
+        "http://localhost:3001/images/1731472501472-194865936.jpeg",
+        "http://localhost:3001/images/1731472501472-768809764.jpg"
       ],
       "roomTitle": "Deluxe Suite",
       "roomBedroomCount": 2
@@ -31,14 +33,8 @@
     {
       "roomSlug": "standard-room",
       "roomImage": [
-        "http://localhost:3001/images/1731394662334-874061156.jpeg",
-        "http://localhost:3001/images/1731394662334-122568195.jpg",
-        "http://localhost:3001/images/1731402861476-330272673.jpeg",
-        "http://localhost:3001/images/1731402861477-790414982.jpg",
-        "http://localhost:3001/images/1731415683472-983708604.jpeg",
-        "http://localhost:3001/images/1731415683473-694566479.jpg",
-        "http://localhost:3001/images/1731416292364-122125800.jpeg",
-        "http://localhost:3001/images/1731416292365-312611727.jpg"
+        "http://localhost:3001/images/1731472475634-197247327.jpeg",
+        "http://localhost:3001/images/1731472475634-200810241.jpg"
       ],
       "roomTitle": "Standard Room",
       "roomBedroomCount": 1
