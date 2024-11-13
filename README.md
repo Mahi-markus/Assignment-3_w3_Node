@@ -63,7 +63,7 @@ Start the server with:
 
     The server will be available at http://localhost:3001.
 
-API Endpoints
+# API Endpoints
 /api - Base URL for all routes
 
 All the following routes are prefixed with /api, so the full routes will be:
