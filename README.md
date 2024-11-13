@@ -64,8 +64,9 @@ API Endpoints
 /api - Base URL for all routes
 
 All the following routes are prefixed with /api, so the full routes will be:
-
-    /api/hotel/:identifier
+       
+    /api/hotel
+    /api/hotel/:hotelId
     /api/hotels/upload-images
     /api/hotels/upload-room-images
     /api/hotel/:hotelId
@@ -238,15 +239,10 @@ Tech Stack
     Slugify – For generating slugs based on hotel titles.
     Jest – A testing framework for unit testing.
 
-License
 
-This project is licensed under the MIT License.
-Contributions
-
-Feel free to contribute to this project by opening issues or submitting pull requests. Contributions are welcome!
 
 
 ### Key Change:
 - Added a **/api** section in the `API Endpoints` section to explain that all the routes are prefixed with `/api`, so that users can easily identify where the routes are being accessed from.
   
-This structure makes it clear to users where the routes are located and what the base URL `/ap
+This structure makes it clear to users where the routes are located .
