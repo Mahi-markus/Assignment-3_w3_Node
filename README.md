@@ -162,7 +162,7 @@ These routes handle the requests for hotel data and image uploads.
 
 ```
 
-# Special Intruction to upload images::::::::::::::::::::::
+# Special Intruction to upload images
    
 API Endpoints
 1. POST /api/hotels/upload-images
