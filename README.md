@@ -160,8 +160,9 @@ These routes handle the requests for hotel data and image uploads.
 
     Response: The updated hotel record in JSON format.
 
+```
 
-Special Intruction to upload images::::::::::::::::::::::
+# Special Intruction to upload images::::::::::::::::::::::
    
 API Endpoints
 1. POST /api/hotels/upload-images
@@ -224,12 +225,12 @@ Send the request. The response will contain the updated list of image URLs for t
 
 
 
-File Storage
+# File Storage
 
-    Hotel Data: Each hotel is stored in its own JSON file, named hotel-id.json where hotel-id is the unique identifier for the hotel.
+    Hotel Data: Each hotel is stored in its own JSON file, named hotelId.json where hotelId is the unique identifier for the hotel.
     Images: Uploaded images are saved in a designated directory on the server, and the URLs of the uploaded images are updated in the corresponding hotel record.
 
-Testing
+# Testing
 
 Unit tests for this API are written using Jest. To run the tests, use the following command:
 
