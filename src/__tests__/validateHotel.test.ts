@@ -121,3 +121,4 @@ describe('Hotel Validation Tests', () => {
     expect(response.body.errors).toContain("'rooms' must be an array");
   });
 });
+
