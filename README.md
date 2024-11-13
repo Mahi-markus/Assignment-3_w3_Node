@@ -102,7 +102,8 @@ These routes handle the requests for hotel data and image uploads.
           "roomBedroomCount": 1
         }
       ]
-    }```
+    }
+    ```
     
 
     Response: The newly created hotel record with a unique hotelId in JSON format.
@@ -132,7 +133,8 @@ These routes handle the requests for hotel data and image uploads.
 
     Request Body: A JSON object with the updated hotel details. Example:
 
-    ```{
+    ```
+    {
       "title": "Updated Test Hotel",
       "description": "An updated description",
       "guestCount": 3,
@@ -153,7 +155,8 @@ These routes handle the requests for hotel data and image uploads.
           "roomBedroomCount": 2
         }
       ]
-    }```
+    }
+    ```
 
     Response: The updated hotel record in JSON format.
 
