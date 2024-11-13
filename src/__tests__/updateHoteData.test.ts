@@ -1,10 +1,11 @@
 import request from 'supertest';
 import express from 'express';
 
-import {updateHotelData, getHotel} from '../controllers/hotelController'; // Mock these dependencies
+import { updateHotelData, getHotel } from '../controllers/hotelController';
+import { updateHotel, getHotelById } from '../utils/filehandler'; // Import the actual service functions for mock
 
 // Mock the service functions
-jest.mock('../services/hotelService', () => ({
+jest.mock('../utils/filehandler', () => ({
   updateHotel: jest.fn(),
   getHotelById: jest.fn(),
 }));
@@ -17,7 +18,7 @@ app.put('/api/hotel/:hotelId', updateHotelData);
 
 describe('Update Hotel Data Tests', () => {
   const hotelId = '0070c91b-1d02-4d1e-97d3-3eefdc7d90e2';
-  
+
   it('should update hotel data successfully', async () => {
     const updatedData = {
       title: 'Updated Hotel Title',
@@ -35,8 +36,9 @@ describe('Update Hotel Data Tests', () => {
       bathroomCount: 1,
     };
 
-    (updateHotelData as jest.Mock).mockResolvedValue(updatedHotel);
-    (getHotel as jest.Mock).mockResolvedValue(updatedHotel);
+    // Mocking the service function responses
+    (updateHotel as jest.Mock).mockResolvedValue(updatedHotel);
+    (getHotelById as jest.Mock).mockResolvedValue(updatedHotel);
 
     const response = await request(app)
       .put(`/api/hotel/${hotelId}`)
@@ -51,11 +53,12 @@ describe('Update Hotel Data Tests', () => {
     const updatedHotel = {
       hotelId,
       title: 'New Unique Hotel Title',
-      slug: 'new-unique-hotel-title', // Check if the slug is generated correctly
+      slug: 'new-unique-hotel-title', // Ensure the slug is correctly generated
     };
 
-    (updateHotelData as jest.Mock).mockResolvedValue(updateHotelData);
-    (getHotel as jest.Mock).mockResolvedValue(updatedHotel);
+    // Mocking service function responses
+    (updateHotel as jest.Mock).mockResolvedValue(updatedHotel);
+    (getHotelById as jest.Mock).mockResolvedValue(updatedHotel);
 
     const response = await request(app)
       .put(`/api/hotel/${hotelId}`)
@@ -66,7 +69,9 @@ describe('Update Hotel Data Tests', () => {
   });
 
   it('should return a 404 error if hotel is not found', async () => {
-    (updateHotelData as jest.Mock).mockRejectedValue(new Error('Hotel not found'));
+    // Mocking the service function to reject when hotel is not found
+    (updateHotel as jest.Mock).mockRejectedValue(new Error('Hotel not found'));
+    (getHotelById as jest.Mock).mockResolvedValue(null); // Simulate no hotel found
 
     const response = await request(app)
       .put(`/api/hotel/${hotelId}`)
@@ -77,12 +82,14 @@ describe('Update Hotel Data Tests', () => {
   });
 
   it('should return 500 for unexpected errors', async () => {
-    (updateHotelData as jest.Mock).mockRejectedValue(new Error('Unexpected error'));
+    // Mocking an unexpected error in the service function
+    (updateHotel as jest.Mock).mockRejectedValue(new Error('Unexpected error'));
 
     const response = await request(app)
       .put(`/api/hotel/${hotelId}`)
       .send({ title: 'Error Hotel' });
 
     expect(response.status).toBe(500);
+
   });
 });
