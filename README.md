@@ -43,13 +43,13 @@ Follow these steps to set up the project locally:
 ```bash
     Install dependencies:
     npm init -y
-    npm install express cors dotenv
     npm install -D typescript @types/express @types/node @types/cors ts-node nodemon
     npm install multer uuid && npm install -D @types/multer @types/uuid
     npm install --save-dev jest @types/jest ts-jest
     npm install slugify
 ```
    Port: 3001  
+
 
     Use npm or yarn to install the required dependencies:
 
