@@ -36,6 +36,8 @@ Follow these steps to set up the project locally:
 
  
    git clone https://github.com/your-username/hotel-management-api.git
+
+   
    cd hotel-management-api
 
     Install dependencies:
@@ -58,7 +60,7 @@ Start the server with:
     # or for development
     npm run dev
 
-    The server will be available at http://localhost:3000.
+    The server will be available at http://localhost:3001.
 
 API Endpoints
 /api - Base URL for all routes
