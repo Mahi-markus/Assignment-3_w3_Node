@@ -41,8 +41,8 @@ describe('Hotel Validation Tests', () => {
         amenities: ['wifi'],
         hostInfo: { name: 'John Doe' },
         address: '123 Main St',
-        latitude: 200, // Invalid latitude
-        longitude: -200, // Invalid longitude
+        latitude: 70, // Invalid latitude
+        longitude: -100, // Invalid longitude
       });
 
     expect(response.status).toBe(400);
