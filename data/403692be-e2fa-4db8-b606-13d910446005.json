@@ -15,7 +15,10 @@
   "latitude": 40.7128,
   "longitude": -74.006,
   "slug": "test-hotel",
-  "images": [],
+  "images": [
+    "http://localhost:3001/images/1731484905486-774810081.jpg",
+    "http://localhost:3001/images/1731484905487-648125816.jpeg"
+  ],
   "rooms": [
     {
       "roomSlug": "room-1",

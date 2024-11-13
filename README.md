@@ -23,6 +23,7 @@ To run this project, you will need the following:
 - **TypeScript**
 - **Multer** (for image uploads)
 - **UUID** (for generating unique hotel IDs)
+  **Slugify** (in order to slugify hotel titles and room titles)
 - **Jest** (for unit testing)
 - **Postman** (for testing of http requests(get,put,post,images upload))
 
@@ -37,7 +38,7 @@ Follow these steps to set up the project locally:
  
    git clone https://github.com/your-username/hotel-management-api.git
 
-   
+
    cd hotel-management-api
 
     Install dependencies:
