@@ -3,7 +3,7 @@
 import express from 'express';
 import upload from '../utils/upload'; // Multer upload setup
 import hotelValidation from '../middleware/Validations';
-import { validationResult } from 'express-validator';
+import { errorHandler } from '../middleware/errorHandle';
 
 
 
@@ -19,23 +19,28 @@ import {
 
 const router = express.Router();
 
-// POST /hotel
-router.post('/hotel', hotelValidation, createHotel);
+// POST 
+//    api/hotel
+router.post('/hotel',errorHandler, hotelValidation, createHotel);
 
 
 
-// GET /hotel/:identifier - Get hotel by ID or slug
-router.get('/hotel/:identifier', getHotel);
+// GET 
+//   /api/hotel/:identifier           - Get hotel by ID or slug
+router.get('/hotel/:identifier',errorHandler, getHotel);
 
 
-// PUT /hotel/:hotelId
-router.put('/hotel/:hotelId',  updateHotelData);
+// PUT 
+//      /api/hotel/:hotelId
+router.put('/hotel/:hotelId', errorHandler,hotelValidation, updateHotelData);
 
 // image upload
-router.post('/hotels/upload-images', upload.array('images'), uploadImages);
+//       /api/hotels/upload-images
+router.post('/hotels/upload-images', upload.array('images'),errorHandler, uploadImages);
 
 
 //room image upload
-router.post('/hotels/upload-room-images', upload.array('roomImage'), uploadRoomImages);
+//       /api/hotels/upload-room-images
+router.post('/hotels/upload-room-images', upload.array('roomImage'),errorHandler, uploadRoomImages);
 
 export default router;

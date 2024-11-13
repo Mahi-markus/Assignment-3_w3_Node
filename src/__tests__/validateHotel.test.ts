@@ -4,9 +4,9 @@ import hotelValidation from '../middleware/Validations'; // Assuming this is the
 import { createHotel } from '../controllers/hotelController';
 
 const app = express();
-app.use(express.json()); // To parse JSON bodies
+app.use(express.json()); // Parse JSON bodies
 
-// Apply your validation middleware and controller
+// Apply validation middleware and controller
 app.post('/api/hotel', hotelValidation, createHotel);
 
 describe('Hotel Validation Tests', () => {
@@ -22,7 +22,7 @@ describe('Hotel Validation Tests', () => {
         hostInfo: { name: 'John Doe' },
         address: '123 Main St',
         latitude: 40.7128,
-        longitude: -74.0060,
+        longitude: 74.0060,
       });
 
     expect(response.status).toBe(400);
