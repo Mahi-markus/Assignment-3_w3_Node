@@ -4,6 +4,7 @@ import express from 'express';
 import upload from '../utils/upload'; // Multer upload setup
 import hotelValidation from '../middleware/Validations';
 import { errorHandler } from '../middleware/errorHandle';
+const app = express();
 
 
 
@@ -12,7 +13,8 @@ import {
   uploadImages,
   getHotel,
   updateHotelData,
-  uploadRoomImages
+  uploadRoomImages,
+  
   
 } from '../controllers/hotelController';
 
@@ -42,5 +44,11 @@ router.post('/hotels/upload-images', upload.array('images'),errorHandler, upload
 //room image upload
 //       /api/hotels/upload-room-images
 router.post('/hotels/upload-room-images', upload.array('roomImage'),errorHandler, uploadRoomImages);
+
+
+// Test route to check connection
+app.get("/api/test", (req, res) => {
+  res.json({ message: "Connection to API is successful!" });
+});
 
 export default router;
